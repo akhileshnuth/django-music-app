@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding for proper text display -->
     <meta charset="UTF-8">
-    <title>Music Website</title>
-</head>
-<body>
 
-    <nav>
-        <a href="/">Home</a> |
-        <a href="/about/">About</a> |
-        <a href="/contact/">Contact</a>
+    <!-- Page title (can be overridden by child templates) -->
+    <title>{% block title %}Music Website{% endblock %}</title>
+
+    <!-- STYLES -->
+    <!-- Tailwind CSS CDN Loads the complete Tailwind library
+    Allows utility classes like: bg-blue-600, text-gray-900, p-4, flex, grid, etc. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GLOBAL JAVASCRIPT -->
+    <!-- Runs once when page loads -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Base template loaded");
+        });
+    </script>
+</head>
+
+<!-- 
+BODY STYLING
+bg-gray-100  → light gray background
+text-gray-900 → dark text color
+flex flex-col → vertical layout
+min-h-screen → full screen height
+-->
+<body class="bg-gray-100 text-gray-900 flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+
+    <!-- 
+    Header section
+    bg-blue-600 → blue background
+    text-white → white text
+    -->
+    <header class="bg-blue-600 text-white">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-2xl font-bold">🎵 Music Website</h1>
+            <p class="text-sm text-blue-200">
+                Django + Tailwind CSS
+            </p>
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR -->
+
+    <!-- 
+    Navigation bar
+    bg-blue-500 → slightly lighter blue
+    flex → horizontal layout
+    gap-6 → spacing between links
+    -->
+    <nav class="bg-blue-500 text-white">
+        <div class="container mx-auto px-6 py-3 flex gap-6">
+
+            <!-- Navigation links -->
+            <!-- hover:underline → underline on hover -->
+            <a href="/" class="hover:underline">Home</a>
+            <a href="/about/" class="hover:underline">About</a>
+            <a href="/contact/" class="hover:underline">Contact</a>
+
+        </div>
     </nav>
 
-    <hr>
+    <!-- MAIN CONTENT AREA -->
 
-    {% block content %}{% endblock %}
+    <!-- 
+    flex-grow - pushes footer to bottom
+    container - centers content
+    p-6 → padding
+    -->
+    <main class="flex-grow container mx-auto p-6">
+
+        <!-- 
+        CONTENT BLOCK
+        Child templates inject their page-specific content here
+        -->
+        {% block content %}{% endblock %}
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <!-- 
+    Footer section
+    bg-gray-800 - dark gray background
+    text-gray-300 - light gray text
+    -->
+    <footer class="bg-gray-800 text-gray-300 text-center py-4 text-sm">
+        © 2026 Music Website. All rights reserved.
+    </footer>
 
 </body>
 </html>

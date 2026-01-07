@@ -1,19 +1,65 @@
 {% extends 'base.html' %}
+<!-- Uses base.html layout -->
+
+{% block title %}Contact | Music Website{% endblock %}
 
 {% block content %}
-<h1>Contact Us</h1>
 
+<!-- Page heading -->
+<h1 class="text-2xl font-bold mb-4">
+    Contact Us
+</h1>
+
+<!-- Success message after form submission -->
+<!-- bg-green-100 → light green background -->
+<!-- text-green-700 → green text -->
 {% if success %}
-<p style="color: green;">Message sent successfully!</p>
+<p class="bg-green-100 text-green-700 p-3 rounded mb-4">
+    Message sent successfully!
+</p>
 {% endif %}
 
-<form method="post">
+<!-- Contact form -->
+<!-- bg-white → white background -->
+<!-- p-6 → padding -->
+<!-- rounded → rounded corners -->
+<!-- shadow → form shadow -->
+<form method="post" class="bg-white p-6 rounded shadow max-w-md">
+
+    <!-- CSRF token for Django security -->
     {% csrf_token %}
-    <input type="text" name="name" placeholder="Name" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="text" name="subject" placeholder="Subject" required><br><br>
-    <textarea name="message" placeholder="Message" required></textarea><br><br>
-    <button type="submit">Send</button>
+
+    <!-- Name input -->
+    <input class="w-full p-2 border rounded mb-3"
+           name="name"
+           placeholder="Name"
+           required>
+
+    <!-- Email input -->
+    <input class="w-full p-2 border rounded mb-3"
+           name="email"
+           placeholder="Email"
+           required>
+
+    <!-- Subject input -->
+    <input class="w-full p-2 border rounded mb-3"
+           name="subject"
+           placeholder="Subject"
+           required>
+
+    <!-- Message textarea -->
+    <textarea class="w-full p-2 border rounded mb-3"
+              name="message"
+              placeholder="Message"
+              required></textarea>
+
+    <!-- Submit button -->
+    <!-- bg-blue-600 - blue background -->
+    <!-- text-white - white text -->
+    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Send
+    </button>
+
 </form>
 
 {% endblock %}

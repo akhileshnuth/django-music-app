@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
+<!-- Uses base.html layout -->
+
+{% block title %}About | Music Website{% endblock %}
 
 {% block content %}
-<h1>About</h1>
-<p>This is a simple Django music website.</p>
+
+<!-- Page heading -->
+<h1 class="text-2xl font-bold mb-4">
+    About
+</h1>
+
+<!-- About text -->
+<!-- text-gray-700 → readable paragraph color -->
+<p class="text-gray-700">
+    This project is built using Django and Tailwind CSS.
+    It demonstrates template inheritance, database-driven pages,
+    and clean UI design.
+</p>
+
 {% endblock %}

@@ -1,13 +1,63 @@
 {% extends 'base.html' %}
+<!-- Uses base.html layout -->
+
+{% block title %}Home | Music Website{% endblock %}
 
 {% block content %}
-<h1>Albums</h1>
 
-<ul>
-    {% for album in albums %}
-        <li>{{ album.name }} - {{ album.artist }} - {{ album.release_date }}</li>
-    {% empty %}
-        <li>No albums found</li>
-    {% endfor %}
-</ul>
+<!-- Page heading -->
+<!-- text-3xl → large text -->
+<!-- font-bold → bold text -->
+<!-- mb-6 → margin bottom -->
+<h1 class="text-3xl font-bold mb-6 text-center">
+    Album Collection
+</h1>
+
+<!-- Check if albums exist -->
+{% if albums %}
+
+    <!-- 
+    GRID LAYOUT
+    grid - enable grid system
+    grid-cols-1 - 1 column on mobile
+    md:grid-cols-3 - 3 columns on medium & larger screens
+    gap-6 - space between cards
+    -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        {% for album in albums %}
+        <!-- Album card -->
+        <!-- bg-white - white background -->
+        <!-- p-4 - padding -->
+        <!-- rounded-lg - rounded corners -->
+        <!-- shadow - card shadow -->
+        <div class="bg-white p-4 rounded-lg shadow">
+
+            <!-- Album name -->
+            <h2 class="text-xl font-semibold mb-1">
+                {{ album.name }}
+            </h2>
+
+            <!-- Artist name -->
+            <p class="text-gray-600">
+                Artist: {{ album.artist }}
+            </p>
+
+            <!-- Release date -->
+            <p class="text-gray-500 text-sm">
+                Released: {{ album.release_date }}
+            </p>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% else %}
+    <!-- Message if no albums are available -->
+    <p class="text-center text-gray-500">
+        No albums found.
+    </p>
+{% endif %}
+
 {% endblock %}
